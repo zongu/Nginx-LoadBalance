@@ -1,0 +1,36 @@
+version: '3'
+services:
+  api1:
+    container_name: api1
+    image: api:CustomVersion
+    command: "PORT=9001 NO=1"
+    networks: 
+      - nginx
+  api2:
+    container_name: api2
+    image: api:CustomVersion
+    command: "PORT=9001 NO=2"
+    networks: 
+      - nginx
+  api3:
+    container_name: api3
+    image: api:CustomVersion
+    command: "PORT=9002 NO=3"
+    networks: 
+      - nginx
+  api4:
+    container_name: api4
+    image: api:CustomVersion
+    command: "PORT=9002 NO=4"
+    networks: 
+      - nginx
+  nginx:
+    container_name: nginx
+    image: nginx:CustomVersion
+    ports:
+      - "9001:9001"
+      - "9002:9002"
+    networks: 
+      - nginx
+networks:
+  nginx:
